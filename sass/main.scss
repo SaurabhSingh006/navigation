@@ -1,0 +1,173 @@
+// variables
+:root {
+  --black: #000000;
+  --white: #ffffff;
+}
+
+///////////////////////////////////////////////////
+// BASIC RESET 
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px IMPORTANT
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: var(--white); 
+}
+
+/////////////////////////////////////////////////////
+// NAVIGATION STYLING
+.nav {
+  background-color: black; 
+  padding: 1rem 4rem;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;  
+  align-items: center;
+
+  &__container {
+    padding: 0rem 4rem;
+    background-color: var(--black); 
+
+    @media(max-width: 900px) { 
+      display: none; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw; 
+      min-height: 100vh;  
+      padding: 12rem;   
+    }
+  }
+
+  .nav__btn {
+    display: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300; 
+    padding: .05rem;   
+    z-index: 50; 
+
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+
+    @media(max-width: 900px) {
+      display: initial;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.8rem;
+    padding: .5rem 1.5rem; 
+    //margin: 0rem 1rem;  
+    border: 1px solid black;
+    transition: .2s;
+    color: var(--white);
+
+    @media(max-width: 900px) {
+      display: block;
+      text-align: center; 
+      margin: .5rem;
+    }
+
+    &:hover {
+      background-color: var(--white);
+      color: var(--black);   
+    }
+
+    &:hover .dropdwn__icon {
+      opacity: 0; 
+    }
+  }
+
+  &__dropdwn {
+    display: inline-block;
+    position: relative;
+    background-color: var(--black); 
+    
+    @media(max-width: 900px) {
+      display: block;
+    }
+
+    &:hover > .nav__dropdwn-content {
+      display: block;
+    }
+
+    // &:hover + .dropdwn__icon { 
+    //   opacity: 0;
+    // }
+
+    &-content {
+      display: none; 
+      position: absolute;
+      left: 0;
+      min-width: 120px;
+      background-color: var(--black);
+
+      @media(max-width: 900px) {
+        position: initial;
+      }
+
+      &--nested {
+        top: 0;
+        left: -100%;
+      } 
+    }
+
+    &-link { 
+      display: block;
+      
+      &:hover .dropdwn__icon {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.dropdwn__icon {
+  fill: white;
+}
+
+
+//////////////////////////////////////////////////////////////////// SLIDER
+.slider {
+  background-color: gray;
+  max-height: 4rem;
+  display: flex;
+  overflow-x: auto;
+  padding: .6rem 2rem; 
+  
+  &::-webkit-scrollbar {
+    width: 0%;
+    display: none;
+  }
+
+  &__link {
+    font-size: 1.3rem;
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid black; 
+    border-radius: 100px; 
+    font-weight: 500;  
+    color: black;
+    padding: .5rem 1rem;
+    margin: 0rem 2rem;
+    white-space: nowrap;   
+  }
+}
